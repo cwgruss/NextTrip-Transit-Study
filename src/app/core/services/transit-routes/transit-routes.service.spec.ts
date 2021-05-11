@@ -1,13 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { RoutesService } from './routes.service';
+import {TransitRoutesService} from './transit-routes.service';
 
 describe('RoutesService', () => {
-  let service: RoutesService;
+  let service: TransitRoutesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RoutesService);
+    service = TestBed.inject(TransitRoutesService);
   });
 
   it('should be created', () => {
