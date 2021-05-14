@@ -1,8 +1,7 @@
-[
-  {direction_id: 0, direction_name: 'Eastbound'},
-  {direction_id: 1, direction_name: 'Westbound'},
-];
-
+/**
+ * TransitRouteDirectionDTO is returned by the GetDirections API operation.
+ * Two directions are valid for a given route. Either North/South or East/West.
+ */
 export interface TransitRouteDirectionDTO {
   /**
    * Route Direction ID
