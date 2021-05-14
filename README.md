@@ -57,6 +57,8 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ### Unit Tests
 
+**Unfortunately, despite best intentions, there are currently no tests in this repository as of this moment. That means that the below commands will not run**
+
 To run Unit Tests, run the following command
 
 ```bash
