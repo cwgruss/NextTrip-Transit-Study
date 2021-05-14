@@ -75,10 +75,19 @@ npm run e2e
 
 ## FAQ
 
-#### Question 1
+#### What Assumptions were made prior to starting the project?
 
-Answer 1
+1. **Emphasis on Accessibility**
+   Given that the current NexTrip app solves a public need, I assumed the application I built would need to keep accessibility in mind. I reached for the @angular/material library knowing that its components, namely the select list component, already follow most WCAG 2.1 guidelines.
 
-#### Question 2
+2. **Performance Matters**
+   Performance is a pretty core concern for any SPA, but especially so with an application that is likely to be used over cellular data more often than wi-fi. I wanted to keep the application as performant and light as possible. I was hesitant to utilize an entire component library for only a handful of features and concerned about pulling in more utilities, libraries, or npm packages. For styling purposes, I made use of Tailwind--a utility I haven’t used before--in the hopes of shipping only those styles actually present in the application HTML.
 
-Answer 2
+   With regards to the code itself, I made attempts at improving upon the performance of my initial, naive approach. I implemented memoization to each of the HTTP services, and a 35s debounce to ensure that the trainst results could be refreshed while still following the NexTrip API guidelines. With regards to the code itself, I made attempts at improving upon the performance of my initial, naive approach. I implemented memoization to each of the HTTP services, and a 35s debounce to ensure that the trainst results could be refreshed while still following the NexTrip API guidelines.
+
+3. **Attention to Detail**
+   Despite treating this case study as a proof-of-concept, I figured this app I built still needed to look decent. It was a point of pride if nothing else. Again, I pulled in Tailwind to add some styles and flare, and utilized layout components like the MatTable provided by the material library. These things combined allowed me to focus on other attributes of the application, like the core logic and separation of concerns.
+
+4. **Potential to Scale**
+
+The nature of a transit app--transportation being something that changes regularly within a city--made me believe the code needed to be fluid and easy to update. The app wouldn’t just need to scale but would need to shift and mutate to meet new API structures. As a result, I made an effort to develop the app with a domain-driven design approach. I wanted to ensure that should something change--a requirement or the shape of the data itself--the application could change with it. The `TransitRoute` model, for instance, is broken out into multiple classes and structures; through the use of TypeScript mixins, I am then able to compose a model that makes sense for the current “Filter by Route” context. These same mixins could be carried over to the “Filter by Stop” context with minimal effort.
