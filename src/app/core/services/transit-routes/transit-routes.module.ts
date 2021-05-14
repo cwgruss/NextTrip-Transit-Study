@@ -4,6 +4,20 @@ import {
   TransitRoutesService,
   MockTransitRoutesService,
 } from './transit-routes.service';
+import {
+  MockRouteDirectionsService,
+  NexTripRouteDirectionsService,
+  TransitRouteDirectionsService,
+} from './route-directions.service';
+import {
+  NexTripTransitStopsService,
+  TransitRouteStopsService,
+} from './transit-stops.service';
+import {
+  NexTripTransitDeparturesService,
+  TransitRouteDeparturesService,
+} from './transit-departures.service';
+
 @NgModule({
   declarations: [],
   imports: [CommonModule],
@@ -23,6 +37,18 @@ export class TransitRoutesModule {
       ngModule: TransitRoutesModule,
       providers: [
         {provide: TransitRoutesService, useClass: MockTransitRoutesService},
+        {
+          provide: TransitRouteDirectionsService,
+          useClass: NexTripRouteDirectionsService,
+        },
+        {
+          provide: TransitRouteStopsService,
+          useClass: NexTripTransitStopsService,
+        },
+        {
+          provide: TransitRouteDeparturesService,
+          useClass: NexTripTransitDeparturesService,
+        },
       ],
     };
   }
