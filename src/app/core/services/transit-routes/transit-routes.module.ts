@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {
   TransitRoutesService,
   MockTransitRoutesService,
+  NexTripTransitRoutesService,
 } from './transit-routes.service';
 import {
   MockRouteDirectionsService,
@@ -36,7 +37,7 @@ export class TransitRoutesModule {
     return {
       ngModule: TransitRoutesModule,
       providers: [
-        {provide: TransitRoutesService, useClass: MockTransitRoutesService},
+        {provide: TransitRoutesService, useClass: NexTripTransitRoutesService},
         {
           provide: TransitRouteDirectionsService,
           useClass: NexTripRouteDirectionsService,
