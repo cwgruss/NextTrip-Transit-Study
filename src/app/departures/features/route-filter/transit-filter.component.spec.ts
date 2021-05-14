@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TransitFilterComponent } from './transit-filter.component';
+import {TransitFilterComponent} from './transit-filter.component';
 
 describe('TransitFilterComponent', () => {
   let component: TransitFilterComponent;
@@ -8,9 +8,8 @@ describe('TransitFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransitFilterComponent ]
-    })
-    .compileComponents();
+      declarations: [TransitFilterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

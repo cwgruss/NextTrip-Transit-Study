@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StopFilterComponent } from './stop-filter.component';
+import {StopFilterComponent} from './stop-filter.component';
 
 describe('StopFilterComponent', () => {
   let component: StopFilterComponent;
@@ -8,9 +8,8 @@ describe('StopFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StopFilterComponent ]
-    })
-    .compileComponents();
+      declarations: [StopFilterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

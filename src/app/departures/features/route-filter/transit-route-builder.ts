@@ -40,7 +40,7 @@ export class TransitRouteBuilder implements TransitRouteBuilderAPI {
   addRouteDirections(directions: NexTripRouteDirection[]): this {
     if (!this._route) {
       throw new Error(
-        `A transit route has not been created. First create a route with createTransitRoute`
+        'A transit route has not been created. First create a route with createTransitRoute'
       );
     }
 
@@ -60,7 +60,7 @@ export class TransitRouteBuilder implements TransitRouteBuilderAPI {
   setRouteLocationStop(location: NexTripRouteLocation) {
     if (!this._route) {
       throw new Error(
-        `A transit route has not been created. First create a route with createTransitRoute`
+        'A transit route has not been created. First create a route with createTransitRoute'
       );
     }
 

@@ -5,17 +5,17 @@ module.exports = {
     extend: {
       colors: {
         black: {
-          DEFAULT: '#333'
+          DEFAULT: '#333',
         },
         red: {
           DEFAULT: '#c00',
-          800: '#990000'
+          800: '#990000',
         },
-      }
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

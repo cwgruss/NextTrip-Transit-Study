@@ -1,6 +1,6 @@
 # NexTrip Case Study
 
-NexTrip is a transit tool provided by the MetroTransit system in Minnesota. The tool provides information about a particular transit route, such as when the next scheduled departure is and what stops are available along the route.
+NexTrip is a transit tool provided by the MetroTransit system of Minnesota. The tool provides information about a particular transit route, such as when the next scheduled departure is and what stops are available along the route.
 
 This project aims to replicate that same functionality within a single-page app context using the public API provided by MetroTransit.
 

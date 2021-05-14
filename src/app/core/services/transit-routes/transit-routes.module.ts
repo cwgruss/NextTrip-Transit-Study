@@ -27,7 +27,7 @@ export class TransitRoutesModule {
     // Ensure TransitRoutesService is a singleton service
     if (parentModule) {
       throw new Error(
-        `TransitRoutesModule has already been loaded. Import only in root AppModule.`
+        'TransitRoutesModule has already been loaded. Import only in root AppModule.'
       );
     }
   }
