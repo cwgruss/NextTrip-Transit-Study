@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DeparturesToggleComponent } from './departures-toggle.component';
+import {DeparturesToggleComponent} from './departures-toggle.component';
 
 describe('DeparturesToggleComponent', () => {
   let component: DeparturesToggleComponent;
@@ -8,9 +8,8 @@ describe('DeparturesToggleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeparturesToggleComponent ]
-    })
-    .compileComponents();
+      declarations: [DeparturesToggleComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

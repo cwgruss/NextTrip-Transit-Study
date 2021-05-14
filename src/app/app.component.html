@@ -1,145 +1,27 @@
-<!--
-  Welcome to Tailwind Play, the official Tailwind CSS playground!
-
-  Everything here works just like it does when you're running Tailwind locally
-  with a real build pipeline. You can customize your config file, use features
-  like `@apply`, or even add third-party plugins.
-
-  Feel free to play with this example if you're just learning, or trash it and
-  start from scratch if you know enough to be dangerous. Have fun!
--->
 <div
   class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12"
 >
-  <div class="relative py-3 sm:max-w-5xl sm:mx-auto">
-    <div class="relative py-10 bg-white shadow-lg sm:rounded-3xl">
-      <div class="max-w-5xl mx-auto text-gray-700 sm:px-20 py-3">
+  <div class="relative py-3 sm:max-w-5xl sm:mx-auto md:w-10/12">
+    <main class="relative py-10 bg-white shadow-lg sm:rounded-3xl">
+      <div class="max-w-5xl mx-auto text-black sm:px-20 py-3">
         <h1 class="text-4xl">Real-time Departures</h1>
       </div>
-      <div>
-        <div
-          class="
-            flex flex-row flex-wrap flex-grow-0
-            items-baseline
-            justify-evenly
-            bg-gray-600
-            text-gray-200 text-2xl
-          "
-        >
-          <div class="tab py-6 px-4 relative">
-            <span>By Route</span>
-          </div>
-          <div class="tab py-6 px-4 relative">
-            <span>By Stop #</span>
-          </div>
-        </div>
-        <div class="divide-y divide-gray-200 sm:p-20">
-          <div
-            class="py-8 text-base leading-6 space-y-4 sm:text-lg sm:leading-7"
-          >
-            <ul class="list-disc space-y-2">
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg
-                    class="flex-shrink-0 h-5 w-5 text-cyan-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <p class="ml-2">Create basic app shell with routing.</p>
-              </li>
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg
-                    class="flex-shrink-0 h-5 w-5 text-cyan-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <p class="ml-2">Create list of available routes.</p>
-              </li>
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg
-                    class="flex-shrink-0 h-5 w-5 text-cyan-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <p class="ml-2">Select a direction for a bus route.</p>
-              </li>
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg
-                    class="flex-shrink-0 h-5 w-5 text-cyan-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <p class="ml-2">
-                  For a given route and direction, display the stops
-                </p>
-              </li>
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg
-                    class="flex-shrink-0 h-5 w-5 text-cyan-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <p class="ml-2">
-                  Respond reasonably to browser back and forward buttons (for
-                  example, implement application routing)
-                </p>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <nt-departures-toggle></nt-departures-toggle>
-          </div>
-          <div
-            class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7"
-          >
-            <p>Want to learn more?</p>
-            <p>
-              <a class="text-cyan-600 hover:text-cyan-700">
-                Read the docs &rarr;
-              </a>
-            </p>
-          </div>
+      <div class="divide-y divide-gray-200 sm:p-5">
+        <nt-departures-toggle></nt-departures-toggle>
+
+        <div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
+          <p>Want to learn more?</p>
+          <p>
+            <a
+              class="text-cyan-600 hover:text-cyan-700"
+              target="_blank"
+              href="https://github.com/cwgruss/NextTrip-Transit-Study"
+            >
+              Read the docs &rarr;
+            </a>
+          </p>
         </div>
       </div>
-    </div>
+    </main>
   </div>
 </div>
