@@ -34,6 +34,7 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
   @ViewChild('noDepartures')
   noDepartures: TemplateRef<any> | null = null;
 
+  routes$: Observable<NexTripRoute[]> = of([]);
   routeDirections$: Observable<NexTripRouteDirection[]> = of();
   routeStopLocations$: Observable<NexTripRouteLocation[]> = of();
   routeDepartures$: Observable<NexTripDepartureAggregate> = of();
@@ -57,12 +58,6 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
 
   private _combinedSubscriptions: Subscription | null = null;
 
-  get routes$(): Observable<NexTripRoute[]> {
-    return this._transitRoutes
-      .getActiveRoutes()
-      .pipe(tap(routes => (this.routes = routes)));
-  }
-
   constructor(
     private _transitRoutes: TransitRouteFacade,
     private _router: Router,
@@ -79,6 +74,8 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
     const timeInterval$ = this._createRefreshTimer();
 
     const routeBuilder = new TransitRouteBuilder();
+
+    this.fetchAllRoutes();
 
     const departures$ = this.form.valueChanges.pipe(
       filter(form => {
@@ -116,19 +113,11 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
             .addRouteDepartures(this.selectedLocationStop!, departures)
             .build();
 
-          console.log(transitRoute, interval);
           return transitRoute;
         })
       )
       .subscribe(transitRoute => {
         this.transitRoute = transitRoute;
-        console.log(this.transitRoute);
-        console.log(
-          this.transitRoute.getDepatures(
-            this.selectedDirection?.directionId!,
-            this.selectedLocationStop?.placeCode!
-          )
-        );
       });
 
     this.transitRouteControl.valueChanges.subscribe((routeId: string) => {
@@ -164,6 +153,14 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
     this._combinedSubscriptions!.unsubscribe();
   }
 
+  fetchAllRoutes() {
+    this.routes$ = this._transitRoutes
+      .getActiveRoutes()
+      .pipe(tap(routes => (this.routes = routes)));
+
+    return this.routes$;
+  }
+
   fetchRouteDirections(routeId: string) {
     this.routeDirections$ = this._transitRoutes
       .getRouteDirections(routeId)
@@ -173,10 +170,14 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
             r => r.transitRouteId === routeId
           );
           this.directions = directions;
+          this._router.navigate([''], {
+            queryParams: {route_id: routeId},
+            queryParamsHandling: 'merge',
+            relativeTo: this._activatedRoute,
+          });
         })
       );
 
-    this._router.navigate([''], {queryParams: {route_id: routeId}});
     return this.routeDirections$;
   }
 
@@ -190,10 +191,13 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
             d => d.directionId === directionId
           );
           this.stopLocations = stopLocations;
+          this._router.navigate([''], {
+            queryParams: {direction_id: directionId},
+            queryParamsHandling: 'merge',
+          });
         })
       );
 
-    this._router.navigate([''], {queryParams: {direction_id: directionId}});
     return this.routeStopLocations$;
   }
 
@@ -210,16 +214,16 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
             loc => loc.placeCode === placeCode
           );
           this.depature = departure;
+          this._router.navigate([''], {
+            queryParams: {
+              route_id: selectedRouteId,
+              direction_id: selectedRouteDirectionId,
+              place_code: placeCode,
+            },
+            queryParamsHandling: 'merge',
+          });
         })
       );
-
-    this._router.navigate([''], {
-      queryParams: {
-        route_id: selectedRouteId,
-        direction_id: selectedRouteDirectionId,
-        place_code: placeCode,
-      },
-    });
 
     return this.routeDepartures$;
   }
