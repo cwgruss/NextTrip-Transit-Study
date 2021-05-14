@@ -86,6 +86,7 @@ const mockRouteDirections: {[key: string]: TransitRouteDirectionDTO[]} = {
     {direction_id: 1, direction_name: 'Westbound'},
   ],
 };
+
 @Injectable()
 export class MockRouteDirectionsService
   implements TransitRouteDirectionsService

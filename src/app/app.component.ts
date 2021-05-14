@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 import {TransitRoutesService} from './core/services/transit-routes';
 
 @Component({
@@ -7,11 +8,9 @@ import {TransitRoutesService} from './core/services/transit-routes';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'NextTrip';
+  title = 'Case Study | NextTrip';
 
-  constructor(private _routeService: TransitRoutesService) {
-    this._routeService.getActiveRoutes().subscribe(routes => {
-      console.log(routes);
-    });
+  constructor(private _titleEl: Title) {
+    this._titleEl.setTitle(this.title);
   }
 }

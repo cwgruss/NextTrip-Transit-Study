@@ -1,4 +1,4 @@
-import { TransitRoute } from './transit-route';
+import {TransitRoute} from './transit-route';
 
 describe('TransitRoute', () => {
   it('should create an instance', () => {

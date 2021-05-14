@@ -1,3 +1,6 @@
+/**
+ * TransitRouteDTO elements is returned by the GetRoutes operation
+ */
 export interface TransitRouteDTO {
   /**
    * Route ID

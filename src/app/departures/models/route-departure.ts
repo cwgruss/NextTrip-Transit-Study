@@ -66,6 +66,13 @@ export class NexTripDeparture {
     return this._departure.departureTime;
   }
 
+  get formattedDepartureTime(): Date {
+    const current = Date.now();
+    const timeFromNow = this.departureTime.getTime() - current;
+
+    return new Date(timeFromNow);
+  }
+
   private constructor(private _departure: DepartureProps) {}
 
   static create(departure: DepartureProps): NexTripDeparture {

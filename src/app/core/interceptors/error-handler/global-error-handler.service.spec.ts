@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { GlobalErrorHandlerService } from './global-error-handler.service';
+import {GlobalErrorHandlerService} from './global-error-handler.service';
 
 describe('GlobalErrorHandlerService', () => {
   let service: GlobalErrorHandlerService;

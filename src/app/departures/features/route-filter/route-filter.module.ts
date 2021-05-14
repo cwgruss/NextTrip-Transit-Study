@@ -17,7 +17,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatTableModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: '', // Load the TransitFilterComponent by default
         pathMatch: 'full',
         component: TransitFilterComponent,
       },

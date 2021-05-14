@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {
   TransitRoutesService,
   MockTransitRoutesService,
+  NexTripTransitRoutesService,
 } from './transit-routes.service';
 import {
   MockRouteDirectionsService,
@@ -27,7 +28,7 @@ export class TransitRoutesModule {
     // Ensure TransitRoutesService is a singleton service
     if (parentModule) {
       throw new Error(
-        `TransitRoutesModule has already been loaded. Import only in root AppModule.`
+        'TransitRoutesModule has already been loaded. Import only in root AppModule.'
       );
     }
   }
@@ -36,7 +37,7 @@ export class TransitRoutesModule {
     return {
       ngModule: TransitRoutesModule,
       providers: [
-        {provide: TransitRoutesService, useClass: MockTransitRoutesService},
+        {provide: TransitRoutesService, useClass: NexTripTransitRoutesService},
         {
           provide: TransitRouteDirectionsService,
           useClass: NexTripRouteDirectionsService,
