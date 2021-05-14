@@ -124,6 +124,11 @@ export class TransitRouteBuilder implements TransitRouteBuilderAPI {
   }
 
   createRoute(route: NexTripRoute): this {
+    if (TypeGaurd.isNullOrUndefined(route)) {
+      throw new Error(
+        `TransitRouteBuilder: unable to create route from undefined data`
+      );
+    }
     this._route = new TransitRouteDeparturesMixin(route, route.transitRouteId);
     return this;
   }
