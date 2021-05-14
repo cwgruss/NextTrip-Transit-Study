@@ -1,1 +1,24 @@
+<div
+  class="
+    flex flex-row flex-wrap flex-grow-1
+    items-baseline
+    justify-evenly
+    text-red-800 text-2xl text-center
+  "
+>
+  <a
+    class="block tab py-6 w-1/2 px-4 relative"
+    [routerLinkActive]="['bg-red-800', 'text-gray-200']"
+    [routerLink]="'/transit-route'"
+  >
+    <span>By Route</span>
+  </a>
+  <a
+    class="block tab w-1/2 py-6 px-4 relative"
+    [routerLinkActive]="['bg-red-800', 'text-gray-200']"
+    [routerLink]="'/transit-stop'"
+  >
+    <span>By Stop #</span>
+  </a>
+</div>
 <router-outlet></router-outlet>

@@ -6,9 +6,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {combineLatest, interval, Subscription, timer, zip} from 'rxjs';
 import {Observable, of} from 'rxjs';
-import {switchMap, map, tap, filter, startWith} from 'rxjs/operators';
+import {switchMap, map, tap, filter, startWith, take} from 'rxjs/operators';
 import {TypeGaurd} from 'src/app/core/util';
 import {NexTripRoute} from '../../models/route';
 import {NexTripDepartureAggregate} from '../../models/route-departure';
@@ -62,7 +63,11 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
       .pipe(tap(routes => (this.routes = routes)));
   }
 
-  constructor(private _transitRoutes: TransitRouteFacade) {
+  constructor(
+    private _transitRoutes: TransitRouteFacade,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute
+  ) {
     this.form = new FormGroup({
       transitRouteId: this.transitRouteControl,
       routeDirectionId: this.routeDirectionControl,
@@ -142,6 +147,13 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
       this._clearRouteStopLocations();
       this.fetchRouteStopLocations(directionId);
     });
+
+    this._activatedRoute.queryParams.pipe(take(1)).subscribe(params => {
+      const {route_id, direction_id, place_code} = params;
+      this.transitRouteControl.setValue(route_id);
+      this.routeDirectionControl.setValue(direction_id);
+      this.routeStopLocationControl.setValue(place_code);
+    });
   }
 
   ngOnDestroy(): void {
@@ -163,6 +175,8 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
           this.directions = directions;
         })
       );
+
+    this._router.navigate([''], {queryParams: {route_id: routeId}});
     return this.routeDirections$;
   }
 
@@ -178,6 +192,8 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
           this.stopLocations = stopLocations;
         })
       );
+
+    this._router.navigate([''], {queryParams: {direction_id: directionId}});
     return this.routeStopLocations$;
   }
 
@@ -196,6 +212,14 @@ export class TransitFilterComponent implements OnInit, OnDestroy {
           this.depature = departure;
         })
       );
+
+    this._router.navigate([''], {
+      queryParams: {
+        route_id: selectedRouteId,
+        direction_id: selectedRouteDirectionId,
+        place_code: placeCode,
+      },
+    });
 
     return this.routeDepartures$;
   }
