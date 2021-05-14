@@ -3,16 +3,21 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'transit-route',
+  },
+  {
     path: 'transit-stop',
     loadChildren: () =>
-      import('./stop-filter/stop-filter.module').then(
+      import('./features/stop-filter/stop-filter.module').then(
         m => m.TransitStopFilterModule
       ),
   },
   {
     path: 'transit-route',
     loadChildren: () =>
-      import('./route-filter/route-filter.module').then(
+      import('./features/route-filter/route-filter.module').then(
         m => m.TransitRouteFilterModule
       ),
   },
