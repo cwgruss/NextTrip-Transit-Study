@@ -91,7 +91,7 @@ const mockRouteDirections: {[key: string]: TransitRouteDirectionDTO[]} = {
 export class MockRouteDirectionsService
   implements TransitRouteDirectionsService
 {
-  constructor(private _httpClient: HttpClient) {}
+  constructor() {}
 
   getRouteDirections(routeId: string): Observable<TransitRouteDirectionDTO[]> {
     const routeDirection = mockRouteDirections[

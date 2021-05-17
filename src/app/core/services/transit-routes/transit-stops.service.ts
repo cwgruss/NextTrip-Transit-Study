@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {AsyncSubject, Observable} from 'rxjs';
+import {AsyncSubject, Observable, of} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {TransitRoutePlaceDTO} from './dto/transit-place.dto';
 
@@ -46,5 +46,17 @@ export class NexTripTransitStopsService implements TransitRouteStopsService {
       .subscribe(routeStopSubject);
 
     return routeStopSubject.asObservable();
+  }
+}
+
+@Injectable()
+export class MockTransitStopsService implements TransitRouteStopsService {
+  constructor() {}
+
+  getRouteStops(
+    routeId: string,
+    directionId: number
+  ): Observable<TransitRoutePlaceDTO[]> {
+    return of([]);
   }
 }

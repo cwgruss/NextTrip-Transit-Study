@@ -10,7 +10,7 @@ import {
   attachRouteDirections,
   attachRouteStopDepartures,
   attachRouteStopLocations,
-} from '../../models/transit-route';
+} from '../../models/transit-route-mixins';
 
 // ********************************************
 // Transit Route Builder

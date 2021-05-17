@@ -3,6 +3,8 @@ import {AsyncSubject, Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {NexTripResultDTO} from './dto/nextrip-result.dto';
+import {TransitRoutesService} from './transit-routes.service';
+import {TransitRouteDTO} from './dto/transit-route.dto';
 
 // --------------------------------------------
 // Transit Departures Service
@@ -61,19 +63,19 @@ export class NexTripTransitDeparturesService
 }
 
 // @Injectable()
-// export class MockTransitDeparturesService implements TransitRoutesService {
-//   constructor() {}
+export class MockTransitDeparturesService implements TransitRoutesService {
+  constructor() {}
 
-//   /**
-//    * Fetches a list of all active bus routes for the current service day.
-//    * @returns {Observable<TransitRouteDTO[]>}
-//    */
-//   getActiveRoutes(): Observable<TransitRouteDTO[]> {
-//     return of([
-//       {route_id: '901', agency_id: 0, route_label: 'METRO Blue Line'},
-//       {route_id: '906', agency_id: 10, route_label: 'Airport Shuttle'},
-//       {route_id: '923', agency_id: 0, route_label: 'METRO C Line'},
-//       {route_id: '888', agency_id: 0, route_label: 'Northstar Commuter Rail'},
-//     ]);
-//   }
-// }
+  /**
+   * Fetches a list of all active bus routes for the current service day.
+   * @returns {Observable<TransitRouteDTO[]>}
+   */
+  getActiveRoutes(): Observable<TransitRouteDTO[]> {
+    return of([
+      {route_id: '901', agency_id: 0, route_label: 'METRO Blue Line'},
+      {route_id: '906', agency_id: 10, route_label: 'Airport Shuttle'},
+      {route_id: '923', agency_id: 0, route_label: 'METRO C Line'},
+      {route_id: '888', agency_id: 0, route_label: 'Northstar Commuter Rail'},
+    ]);
+  }
+}
